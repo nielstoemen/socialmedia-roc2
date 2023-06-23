@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import reactLogo from "./roclogo.png";
 import './App.css';
 import './firebase.js';
 import React, { useState, useEffect } from 'react';
@@ -7,6 +8,31 @@ import { db } from './firebase.js';
 import { getDatabase, ref, set, addDoc } from "firebase/firestore";
 
 function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <div className='headerdesigndriehoek'></div>
+
+        <div className='headerlogo'>
+          <img src={reactLogo} alt="react logo" height="35px" width="100%"/>
+        </div>
+
+      
+        
+        
+      </header>
+      <body>
+        <div className='bodysection1container'>
+
+          <div className='schoolinfosection'></div>
+
+          <div className='inlogblok'></div>
+        </div>
+
+      </body>
+    </div>
+  );
+
 
   
 
@@ -88,6 +114,7 @@ function App() {
       );
     
   
+
 }
 
 export default App;
