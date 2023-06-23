@@ -4,8 +4,13 @@ import './firebase.js';
 import React, { useState, useEffect } from 'react';
 import {getDocs, collection, doc} from 'firebase/firestore'
 import { db } from './firebase.js';
+import { getDatabase, ref, set, addDoc } from "firebase/firestore";
 
 function App() {
+
+  
+
+  //-------------------------------------
 
     const [getUsersList, setUsersList] = useState([]);
     const todos = collection(db, "todos");
@@ -26,11 +31,59 @@ function App() {
         users.push(<button key={data.id}>Send Friendship</button>)
         //users.push(<h2 className='Password'>{data.Password}</h2>)
       })
+
+      //------------------------------------------------------
+        
+
+    // const [getTitle, setTitle] = useState("testuser");
+    // const [getTask, setTask] = useState("task1");
+    // const [getStatus, setStatus] = useState("To do");
+
+    //   const createJob = async () =>{
+    //   await addDoc(
+    //     jobCollectionRef,
+    //   {title: getTitle,
+    //     task: getTask,
+    //     status: getStatus
+    //   });
+      
+  // }
+
+
+
+  const [name, setName] = useState();
+    const [age, setAge] = useState();
+ 
+    // Push Function
+    const Push = () => {
+        db().ref("user").set({
+            name: name,
+            age: age,
+        }).catch(alert);
+    }
+
+
+
+  //---------------------------------------------
     
+
+
+
       return(
         <div className="users">
             { users }
-    
+
+            <center>
+                <input placeholder="Enter your name" value={name}
+                    onChange={(e) => setName(e.target.value)} />
+                <br /><br />
+                <input placeholder="Enter your age" value={age}
+                    onChange={(e) => setAge(e.target.value)} />
+                <br /><br />
+                <button onClick={Push}>PUSH</button>
+            </center>
+            
+            
         </div>
       );
     
